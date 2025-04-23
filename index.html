@@ -5,124 +5,260 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elite Seats - Buy the Upset. Sell the Hype.</title>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Chakra Petch', sans-serif;
       margin: 0;
       padding: 0;
-      background: #2a2a2a;
-      color: #ffffff;
+      background: linear-gradient(to right, #a2b5c8, #6e7f9b);
+      color: #1b1b1b;
+      font-family: 'Chakra Petch', sans-serif;
+      overflow-x: hidden;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #ccc;
+      padding: 10px 20px;
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
-      padding: 40px 20px;
+      z-index: 999;
+    }
+    nav .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: #004d99;
+      font-weight: 700;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #004d99;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #0073e6;
+    }
+    .hero {
+      background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(220,235,255,0.9)),
+                  url('/mnt/data/786f06f4-0383-4dcf-96ec-a1685e70e5fe.png') no-repeat center center/cover;
+      padding: 140px 20px 100px;
+      text-align: center;
+      color: #000;
     }
     .brand-title {
-      font-family: 'Proxima Nova', sans-serif;
+      font-family: 'Orbitron', sans-serif;
       font-size: 5rem;
-      text-align: center;
-      margin: 0;
-    }
-    .brand-title .elite {
-      font-weight: 700;
-      color: #1e90ff;
-    }
-    .brand-title .seats {
-      font-weight: 400;
-      color: #ffffff;
+      margin: 0 0 10px;
+      color: #004d99;
+      text-shadow: 0 0 10px rgba(0, 77, 153, 0.15);
     }
     h2 {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 400;
-      text-align: center;
-      margin: 10px 0 40px;
-      color: #ddd;
-      max-width: 600px;
+      color: #333;
+      max-width: 700px;
+      margin: 0 auto 40px;
     }
     .cta {
       margin-bottom: 30px;
-      text-align: center;
     }
     input, select, button {
       padding: 12px;
       margin: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      border: none;
+      border-radius: 6px;
       font-size: 1rem;
+      transition: all 0.3s ease;
+      font-family: 'Chakra Petch', sans-serif;
+    }
+    input, select {
+      background: #ffffff;
+      color: #1a1a1a;
+      border: 1px solid #ccc;
     }
     button {
-      background-color: #1e90ff;
+      background-color: #004d99;
       color: #fff;
+      font-weight: bold;
       cursor: pointer;
-      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(0, 77, 153, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
-    .steps, .scenarios, .benefits {
-      max-width: 800px;
-      margin-bottom: 40px;
+    button:hover {
+      background-color: #0073e6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 115, 230, 0.35);
+    }
+    .countdown {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #cc0000;
+    }
+    .section {
+      max-width: 960px;
+      margin: 60px auto;
+      padding: 0 20px;
+      animation: fadeIn 1.2s ease-in;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     .section-title {
-      font-size: 1.75rem;
-      font-weight: 600;
-      margin-bottom: 20px;
+      font-size: 2rem;
       text-align: center;
-      color: #1e90ff;
+      color: #004d99;
+      margin-bottom: 30px;
+      text-shadow: 0 0 4px rgba(0, 77, 153, 0.2);
     }
-    .step, .scenario, .benefit {
-      margin-bottom: 15px;
-      line-height: 1.6;
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-left: 4px solid #0073e6;
+    }
+    .card strong {
+      color: #004d99;
     }
     footer {
-      margin-top: 40px;
+      background-color: #d1e5f4;
+      color: #333;
+      padding: 60px 20px;
       text-align: center;
+      font-size: 0.95rem;
+      border-top: 1px solid #bbb;
     }
   </style>
 </head>
-<body>
-  <h1 class="brand-title"><span class="elite">ELITE</span><span class="seats">SEATS</span></h1>
-  <h2>Buy the upset. Sell the hype.</h2>
+  <body>
+    <nav>
+      <div class="logo">ELITESEATS</div>
+      <div>
+        <a href="#how">How It Works</a>
+        <a href="#teams">Top 10 Odds</a>
+        <a href="#scenarios">Scenarios</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#signup">Join</a>
+      </div>
+    </nav>
 
-  <div class="cta">
-    <p><strong>Get early access — join the waitlist & claim your first team ticket-option free.</strong></p>
-    <input type="email" placeholder="Enter your email" required>
-    <select>
-      <option>Select Your Team</option>
-      <option>Texas</option>
-      <option>Alabama</option>
-      <option>Michigan</option>
-      <option>Georgia</option>
-      <option>Florida State</option>
-      <option>Other</option>
-    </select>
-    <button>Join the Waitlist</button>
-  </div>
+    <section class="hero" id="signup">
+      <h1 class="brand-title">ELITESEATS</h1>
+      <h2>Buy the upset. Sell the hype.</h2>
+      <div class="cta">
+        <p><strong>Get early access — join the waitlist & claim your first team ticket-option free.</strong></p>
+        <input type="email" placeholder="Enter your email" required>
+        <select>
+          <option>Select Your Team</option>
+          <option>Texas</option>
+          <option>Alabama</option>
+          <option>Michigan</option>
+          <option>Georgia</option>
+          <option>Florida State</option>
+          <option>Other</option>
+        </select>
+        <button>Join the Waitlist</button>
+        <div class="countdown" id="countdown"></div>
+      </div>
+    </section>
 
-  <div class="steps">
-    <div class="section-title">How It Works</div>
-    <div class="step"><strong>1. Buy Low:</strong> Grab a playoff ticket-option on your favorite team early in the season — prices rise as odds improve.</div>
-    <div class="step"><strong>2. Trade or Hold:</strong> Sell your ticket-option mid-season to another fan, or hold it to cash in if your team makes it.</div>
-    <div class="step"><strong>3. Go or Get Paid:</strong> If they make it — congrats. Your ticket-option turns into a real seat or cash redemption.</div>
-  </div>
+    <div class="section" id="how">
+      <div class="section-title">How It Works</div>
+      <div class="card"><strong>1. Buy Low:</strong> Grab a playoff ticket-option on your favorite team early — prices rise as odds improve.</div>
+      <div class="card"><strong>2. Trade or Hold:</strong> Sell your ticket-option mid-season or hold it to cash in if your team makes it.</div>
+      <div class="card"><strong>3. Go or Get Paid:</strong> If they make it — congrats. Your option becomes a real seat or payout.</div>
+    </div>
 
-  <div class="scenarios">
-    <div class="section-title">Real Scenarios</div>
-    <div class="scenario">Bought Michigan CFP Option Week 2 for $80 → Sold Week 9 for $380.</div>
-    <div class="scenario">Texas Big 12 Title Option $55 → Expired worthless after OU loss.</div>
-    <div class="scenario">UGA SEC Title Option $100 → Redeemed for $900 ticket value.</div>
-  </div>
+    <div class="section" id="scenarios">
+      <div class="section-title">Real Scenarios</div>
+      <div class="card">Bought Michigan CFP Option Week 2 for $80 → Sold Week 9 for $380.</div>
+      <div class="card">Texas Big 12 Title Option $55 → Expired worthless after OU loss.</div>
+      <div class="card">UGA SEC Title Option $100 → Redeemed for $900 ticket value.</div>
+    </div>
 
-  <div class="benefits">
-    <div class="section-title">Why Fans Love It</div>
-    <div class="benefit">⚡ Skip the StubHub markup</div>
-    <div class="benefit">🎯 Bet <em>with</em> your team, not against them</div>
-    <div class="benefit">🔄 Trade any time, peer-to-peer</div>
-    <div class="benefit">🔥 Early access = cheapest options all year</div>
-  </div>
+    <div class="section" id="benefits">
+      <div class="section-title">Why Fans Love It</div>
+      <div class="card">⚡ Skip the StubHub markup</div>
+      <div class="card">🎯 Bet <em>with</em> your team, not against them</div>
+      <div class="card">🔄 Trade any time, peer-to-peer</div>
+      <div class="card">🔥 Early access = cheapest options all year</div>
+    </div>
+    <div class="section" id="teams">
+      <div class="section-title">Top 10 Odds</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/130.png" alt="Michigan" style="width: 50px; vertical-align: middle;"> <strong>Michigan</strong><br>Odds: <strong>+450</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/61.png" alt="Georgia" style="width: 50px; vertical-align: middle;"> <strong>Georgia</strong><br>Odds: <strong>+550</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/251.png" alt="Texas" style="width: 50px; vertical-align: middle;"> <strong>Texas</strong><br>Odds: <strong>+650</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/333.png" alt="Alabama" style="width: 50px; vertical-align: middle;"> <strong>Alabama</strong><br>Odds: <strong>+850</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/228.png" alt="Oregon" style="width: 50px; vertical-align: middle;"> <strong>Oregon</strong><br>Odds: <strong>+1000</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/213.png" alt="Ohio State" style="width: 50px; vertical-align: middle;"> <strong>Ohio State</strong><br>Odds: <strong>+1200</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/239.png" alt="Penn State" style="width: 50px; vertical-align: middle;"> <strong>Penn State</strong><br>Odds: <strong>+1600</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/66.png" alt="LSU" style="width: 50px; vertical-align: middle;"> <strong>LSU</strong><br>Odds: <strong>+1800</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png" alt="Notre Dame" style="width: 50px; vertical-align: middle;"> <strong>Notre Dame</strong><br>Odds: <strong>+2000</strong>
+        </div>
+        <div class="card">
+          <img src="https://a.espncdn.com/i/teamlogos/ncaa/500/52.png" alt="Florida State" style="width: 50px; vertical-align: middle;"> <strong>Florida State</strong><br>Odds: <strong>+2200</strong>
+        </div>
+      </div>
+    </div>
 
-  <footer>
-    <p><strong>Be First In Line</strong></p>
-    <p>This fall, only early signups get access to the first trades. Don’t miss kickoff.</p>
-    <button>Join the Waitlist</button>
-  </footer>
-</body>
-</html>
+    <footer>
+      <p><strong>Be First In Line</strong></p>
+      <p>This fall, only early signups get access to the first trades. Don’t miss kickoff.</p>
+      <button>Join the Waitlist</button>
+    </footer>
+
+    <script>
+      const kickoffDate = new Date("August 31, 2025 12:00:00").getTime();
+      const countdownEl = document.getElementById("countdown");
+      setInterval(() => {
+        const now = new Date().getTime();
+        const distance = kickoffDate - now;
+        if (distance <= 0) {
+          countdownEl.innerHTML = "🏈 It's Game Day!";
+          return;
+        }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownEl.innerHTML = `⏳ Kickoff in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }, 1000);
+    </script>
+  </body>
+  </html>
