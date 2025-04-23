@@ -155,11 +155,58 @@
         border-top: 1px solid #bbb;
       }
     </style>
+    <style>
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+      .menu-toggle div {
+        width: 25px;
+        height: 3px;
+        background-color: #004d99;
+        margin: 4px 0;
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.95);
+          position: absolute;
+          top: 60px;
+          left: 0;
+          padding: 10px 0;
+          border-top: 1px solid #ccc;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        nav a {
+          margin: 10px 0;
+          text-align: center;
+          width: 100%;
+        }
+      }
+    </style>
+
   </head>
   <body>
     <nav>
       <div class="logo">ELITESEATS</div>
-      <div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-links" id="navLinks">
         <a href="#how">How It Works</a>
         <a href="#teams">Top 10 Odds</a>
         <a href="#scenarios">Scenarios</a>
@@ -167,6 +214,7 @@
         <a href="#signup">Join</a>
       </div>
     </nav>
+
 
     <section class="hero" id="signup">
       <h1 class="brand-title">ELITESEATS</h1>
@@ -268,5 +316,12 @@
         countdownEl.innerHTML = `⏳ Kickoff in ${days}d ${hours}h ${minutes}m ${seconds}s`;
       }, 1000);
     </script>
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        nav.classList.toggle('active');
+      }
+    </script>
+
   </body>
   </html>
